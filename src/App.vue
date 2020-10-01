@@ -1,33 +1,20 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-      elevation = 0
-    >
-      <div class="d-flex align-center">
-        <h4>Curriculum</h4>
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <router-link to="/">Home</router-link> |
-      <router-link to="/curriculum">Curriculum</router-link> |
-      <router-link to="/curriculum/show">Upsert</router-link>
-    </v-app-bar>
-
-    <v-main>
+    <navbar />
+   <v-container fluid class="grey lighten-5">
       <router-view />
-      <!-- <HelloWorld/> -->
-    </v-main>
+   </v-container>
   </v-app>
 </template>
 
 <script>
+import Navbar from './components/Navbar.vue'
 
 export default {
   name: 'App',
+  components: {
+    Navbar
+  },
 
   data: () => ({
     //
