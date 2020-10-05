@@ -3,13 +3,9 @@
     <v-col md="6" offset-md="3" sm="8" offset-sm="2">
       <v-row>
         <v-col>
-          <h1 class="title">All Curriculum</h1>
-          <h4>This is the description</h4>
+          <h1 class="title">{{ selectedCurriculum.Name }}</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi,
-            velit? Laboriosam fuga ab dolorem nesciunt itaque inventore dolores,
-            dolore possimus natus enim voluptatibus sequi animi tenetur odio,
-            eligendi in magni.
+            {{ selectedCurriculum.Description }}
           </p>
         </v-col>
       </v-row>
@@ -24,7 +20,7 @@
               <v-list flat subheader three-line>
                 <v-subheader>Resources</v-subheader>
 
-                <v-list-item-group v-model="settings" multiple active-class="">
+                <v-list-item-group multiple active-class="">
                   <v-list-item>
                     <template v-slot:default="{ active }">
                       <v-list-item-action>
@@ -77,7 +73,7 @@
               <v-list flat subheader three-line>
                 <v-subheader>Projects</v-subheader>
 
-                <v-list-item-group v-model="settings" multiple active-class="">
+                <v-list-item-group multiple active-class="">
                   <v-list-item>
                     <template v-slot:default="{ active }">
                       <v-list-item-action>
@@ -136,7 +132,23 @@
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+
+export default {
+  data () {
+    return {
+      selectedCurriculum: {}
+    }
+  },
+  computed: {
+    ...mapState(['CurriculaData'])
+  },
+  mounted () {
+    this.selectedCurriculum = this.CurriculaData.find((curriculum) => {
+      return curriculum.id === this.$route.params.id
+    })
+  }
+}
 </script>
 
 <style>
