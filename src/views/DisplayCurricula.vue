@@ -3,7 +3,11 @@
     <v-col md="6" offset-md="3" sm="8" offset-sm="2">
       <v-row justify="space-between">
         <h1 class="title">All Curricula</h1>
-        <v-btn>Create New</v-btn>
+        <v-btn 
+          @click="$router.push('/curricula/create')"
+        >
+          Create New
+        </v-btn>
       </v-row>
       <v-card
         class="my-5"
